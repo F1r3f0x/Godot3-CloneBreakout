@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scenes/ball.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/paddleRed.png" type="Texture" id=2]
+[ext_resource path="res://scenes/paddle.tscn" type="PackedScene" id=2]
 [ext_resource path="res://resources/brick_tiles.tres" type="TileSet" id=3]
 
 [node name="BreakoutGame" type="Node2D"]
@@ -15,6 +15,5 @@ tile_data = PoolIntArray( 131073, 3, 0, 131074, 3, 0, 131075, 3, 0, 131076, 3, 0
 [node name="Ball" parent="." instance=ExtResource( 1 )]
 position = Vector2( 512, 400 )
 
-[node name="Paddle" type="Sprite" parent="."]
-position = Vector2( 512, 548 )
-texture = ExtResource( 2 )
+[node name="Paddle" parent="." instance=ExtResource( 2 )]
+position = Vector2( 512, 500 )
