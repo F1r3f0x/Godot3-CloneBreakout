@@ -17,3 +17,4 @@ position = Vector2( 512, 400 )
 
 [node name="Paddle" parent="." instance=ExtResource( 2 )]
 position = Vector2( 512, 500 )
+SPEED = 1000
