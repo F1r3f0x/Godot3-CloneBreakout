@@ -1,3 +1,6 @@
 
 .import
 .vscode
+*.md5
+*.stex
+*.import
