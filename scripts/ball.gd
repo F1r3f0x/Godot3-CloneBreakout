@@ -1,8 +1,7 @@
 extends KinematicBody2D
 
 export var SPEED = 500
-
-var direction = Vector2(0.4,-1)
+export var direction: Vector2
 var velocity: Vector2
 
 onready var max_x = get_viewport_rect().size.x
@@ -15,6 +14,10 @@ onready var ball_midsize_y = ball_rect.y/2
 func _ready():
 	pass
 
+
+func bounce(normal: Vector2):
+	velocity = velocity.bounce(normal)
+	direction = velocity.normalized()
 
 func _physics_process(delta):
 	# Calculate ball movement
@@ -33,7 +36,23 @@ func _physics_process(delta):
 	
 	# Check collisions with objects
 	if collision:
-		velocity = velocity.bounce(collision.normal)
-		direction = velocity.normalized()
+		# Did we hit a brick
+		if collision.collider is TileMap:
+			var brickMap: TileMap = collision.collider
+			var tile_pos = brickMap.world_to_map(position)
+			
+			# If any normal component is different than 0 we know the tile is that way
+			if collision.normal.y > 0:
+				tile_pos.y -= 1
+			if collision.normal.y < 0:
+				tile_pos.y += 1
+			if collision.normal.x > 0:
+				tile_pos.x -= 1
+			if collision.normal.x < 0:
+				tile_pos.x += 1
 
+			# This will remove the tile
+			brickMap.set_cellv(tile_pos, -1)
+		
+		bounce(collision.normal)
 
