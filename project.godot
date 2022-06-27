@@ -42,9 +42,9 @@ paddle_move_right={
 [layer_names]
 
 2d_physics/layer_1="bricks"
-2d_physics/layer_2="paddle"
-2d_physics/layer_3="ball"
-2d_physics/layer_4="powerup"
+2d_physics/layer_2="paddles"
+2d_physics/layer_3="balls"
+2d_physics/layer_4="powerups"
 
 [physics]
 
