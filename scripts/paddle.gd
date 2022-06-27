@@ -20,19 +20,20 @@ func _physics_process(delta):
 
 
 func _on_Paddle_body_entered(body: PhysicsBody2D):
-	if body != ball:
-		return
-		
-	var inverted_ball_initial_dir = ball.direction * -1
-	ball.direction.y *= -1
 	
+	body.paddle_bounce(position)
 	
-	# Corner handling
-	var diff_vector = ball.position - position
-	var normal_diff_vector = diff_vector.normalized()
-	var abs_diff_x = abs(normal_diff_vector.x)
-	if abs_diff_x >= 0.95:
-		if normal_diff_vector.x >= 0:
-			ball.direction.x = 1
-		else:
-			ball.direction.x = -1
+#
+#	body.bounced = true
+#	body.direction.y *= -1
+#
+#	# Corner handling
+#	var diff_vector = body.position - position
+#	var normal_diff_vector = diff_vector.normalized()
+#	var abs_diff_x = abs(normal_diff_vector.x)
+#	if abs_diff_x >= 0.95:
+#		if normal_diff_vector.x >= 0:
+#			body.direction.x = 1
+#		else:
+#			body.direction.x = -1
+

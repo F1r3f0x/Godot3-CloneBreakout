@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/ballGrey.png" type="Texture" id=1]
 [ext_resource path="res://scripts/ball.gd" type="Script" id=2]
+[ext_resource path="res://assets/bounce.wav" type="AudioStream" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 10.9765
@@ -16,3 +17,8 @@ texture = ExtResource( 1 )
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="."]
+position = Vector2( -2, 0 )
+stream = ExtResource( 3 )
+volume_db = -10.0
